@@ -100,4 +100,4 @@ git clone https://github.com/SEU_USUARIO/sistema-assistencia-tecnica.git
 
 ## 👨‍💻 Autor
 
-[![GitHub](https://img.shields.io/badge/GitHub-SEU_USUARIO-181717?style=flat&logo=github)](https://github.com/Mateus-Henrique00)
+[![GitHub](https://img.shields.io/badge/GitHub-Mateus-Henrique00-181717?style=flat&logo=github)](https://github.com/Mateus-Henrique00)
