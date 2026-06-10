@@ -18,7 +18,6 @@ public class ArquivoService {
             String json = gson.toJson(lista);
             System.out.println("JSON gerado: " + json);
             writer.write(String.valueOf(json));
-            writer.write(json);
             writer.close();
             System.out.println("Dados cadastrado com sucesso!!!");
         } catch (IOException e) {
