@@ -2,7 +2,7 @@ package model;
 
 public class OrdemServico {
 
-    private static int contador = 0;
+    private static transient int contador = 0;
     private int id;
     private Cliente cliente;
     private String aparelho;
@@ -59,7 +59,7 @@ public class OrdemServico {
 
     @Override
     public String toString() {
-        return "OrdemServiço{" +
+        return "OrdemServico{" +
                 "aparelho='" + aparelho + '\'' +
                 ", id=" + id +
                 ", telefone=" + cliente.getTelefone() +

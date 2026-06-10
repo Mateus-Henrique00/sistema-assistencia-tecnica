@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "cliente": {
+      "nome": "mateus",
+      "telefone": "85996356026",
+      "ID": 1
+    },
+    "aparelho": "iphone",
+    "valorOrcamento": 500.0,
+    "status": "FINALIZADO"
+  }
+][
+  {
+    "id": 1,
+    "cliente": {
+      "nome": "mateus",
+      "telefone": "85996356026",
+      "ID": 1
+    },
+    "aparelho": "iphone",
+    "valorOrcamento": 500.0,
+    "status": "FINALIZADO"
+  }
+]

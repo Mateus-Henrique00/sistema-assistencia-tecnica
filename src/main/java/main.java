@@ -1,8 +1,10 @@
 import model.Cliente;
 import model.OrdemServico;
 import model.Status;
+import service.ArquivoService;
 import service.GerenciadorAssistencia;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class main {

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Cliente {
 
-    private static int contador = 1;
+    private static transient int contador = 1;
     private String nome;
     private String telefone;
     private int ID;

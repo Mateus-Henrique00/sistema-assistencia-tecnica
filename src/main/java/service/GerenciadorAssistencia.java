@@ -27,9 +27,7 @@ public class GerenciadorAssistencia {
     public void CriarOS(OrdemServico os) {
         listaOS.add(os);
         BUSCA.put(os.getId(),os);
-
-
-
+        ArquivoService.salvar(listaOS);
         System.out.println("#OS" + os.getId() + " Adicionado com sucesso!!!!!!!!");
     }
 
