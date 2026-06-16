@@ -7,11 +7,16 @@ import model.Status;
 import java.util.*;
 
 public class GerenciadorAssistencia {
+
+    public GerenciadorAssistencia() {
+        this.listaOS = ArquivoService.carregar();
+    }
+
     private List<OrdemServico> listaOS = new ArrayList<>();
     private HashMap<Integer,OrdemServico> BUSCA = new HashMap<>();
     private Set <Cliente> clientes = new HashSet<>();
-    private HashMap<Integer, Cliente> buscaRapida = new HashMap<>();
 
+    private HashMap<Integer, Cliente> buscaRapida = new HashMap<>();
 
     public void CriarCadastro(Cliente cliente){
         if (!clientes.add(cliente)) {
@@ -66,6 +71,7 @@ public class GerenciadorAssistencia {
         if(os.isPresent()){
             listaOS.remove(os.get());
             BUSCA.remove(id,os.get());
+            ArquivoService.salvar(listaOS);
             System.out.println("OS # " + id + " removida com sucesso!");
 
         }else{

@@ -61,7 +61,7 @@ public class OrdemServico {
     public String toString() {
         return "OrdemServico{" +
                 "aparelho='" + aparelho + '\'' +
-                ", id=" + id +
+                ", id=" + cliente.getID()+
                 ", telefone=" + cliente.getTelefone() +
                 ", cliente=" + cliente.getNome() + '\'' +
                 ", valorOrcamento=" + valorOrcamento +

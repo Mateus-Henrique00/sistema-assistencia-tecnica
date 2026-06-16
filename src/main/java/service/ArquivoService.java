@@ -2,10 +2,15 @@ package service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import model.OrdemServico;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArquivoService {
@@ -25,5 +30,16 @@ public class ArquivoService {
         }
 
 
+    }
+
+    public static List<OrdemServico> carregar(){
+        try {
+            FileReader reader = new FileReader(ARQUIVO);
+            Type type = new TypeToken<List<OrdemServico>>(){}.getType();
+            List<OrdemServico> lista = gson.fromJson(reader,type);
+            return lista != null ? lista : new ArrayList<>();
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
     }
 }
