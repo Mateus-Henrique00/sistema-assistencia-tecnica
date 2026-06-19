@@ -2,10 +2,13 @@ package model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "Ordem_Servico")
 public class OrdemServico {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,8 @@ public class OrdemServico {
     private String aparelho;
     private double valorOrcamento;
 
+    private LocalDate dataAbertura;
+    private LocalDate dataFinalizada;
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -29,7 +34,9 @@ public class OrdemServico {
         this.cliente = cliente;
         this.status = status;
         this.valorOrcamento = valorOrcamento;
+        this.dataAbertura = LocalDate.now();
     }
+
 
     public String getAparelho() {
         return aparelho;
@@ -71,15 +78,31 @@ public class OrdemServico {
         this.valorOrcamento = valorOrcamento;
     }
 
+    public LocalDate getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(LocalDate dataAbertura) {
+        this.dataAbertura = dataAbertura;
+    }
+
+    public LocalDate getDataFinalizada() {
+        return dataFinalizada;
+    }
+
+    public void setDataFinalizada(LocalDate dataFinalizada) {
+        this.dataFinalizada = dataFinalizada;
+    }
+
     @Override
     public String toString() {
         return "OrdemServico{" +
-                "aparelho='" + aparelho + '\'' +
-                ", id Cliente=" + cliente.getID()+
-                ", N° OS=" + NumeroOS +
-                ", telefone=" + cliente.getTelefone() +
-                ", cliente=" + cliente.getNome() + '\'' +
+                "NumeroOS=" + NumeroOS +
+                ", cliente=" + cliente +
+                ", aparelho='" + aparelho + '\'' +
                 ", valorOrcamento=" + valorOrcamento +
+                ", dataAbertura=" + dataAbertura +
+                ", dataFinalizada=" + dataFinalizada +
                 ", status=" + status +
                 '}';
     }

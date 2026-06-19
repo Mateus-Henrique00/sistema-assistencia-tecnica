@@ -28,8 +28,8 @@ public class OrdemServicoRepository {
 
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
-            System.out.println("Erro ao salvar: " + e.getMessage());
 
+            System.out.println("Erro ao salvar: " + e.getMessage());
         }
     }
 
@@ -44,6 +44,18 @@ public class OrdemServicoRepository {
         } catch (Exception e) {
             if (transaction == null) transaction.rollback();
             System.out.println("Erro ao remover: " + e.getMessage());
+        }
+    }
+    public void atualizar(OrdemServico ordemServico){
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.merge(ordemServico);
+            transaction.commit();
+            System.out.println("OS atualizada no banco de dados");
+        }catch (Exception e){
+            if(transaction != null) transaction.rollback();
+            System.out.println("Erro ao atualizar: " + e.getMessage());
         }
     }
 }

@@ -86,7 +86,15 @@ public class main {
                     Cliente cliente = new Cliente(nCliente, numeroCliente);
                     gerenciador.CriarCadastro(cliente);
 
+                    break;
 
+                case 6:
+                    System.out.println("Digite o número da OS para atualizar");
+                    int n = sc.nextInt();
+                    sc.nextLine();
+                    gerenciador.finalizarOS(n);
+
+                    break;
             }
             //Menu de interação
             GerenciadorAssistencia.menu();
@@ -94,6 +102,7 @@ public class main {
             sc.nextLine();
 
         }
+        sc.close();
         System.out.println("Saindo...");
     }
 }

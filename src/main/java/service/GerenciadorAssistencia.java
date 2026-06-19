@@ -4,38 +4,38 @@ import model.Cliente;
 import model.OrdemServico;
 import model.Status;
 
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class GerenciadorAssistencia {
-
-
-    public GerenciadorAssistencia() {
-        //Metodo substituido
-        //this.listaOS = ArquivoService.carregar();
-
-        List<Cliente> clienteDoBanco = ClienteRepository.carregarDoBanco();
-        for (Cliente c : clienteDoBanco) {
-            this.clientes.add(c);
-            this.buscaRapida.put(c.getID(), c);
-        }
-
-        List<OrdemServico> ordemServicosDB = OrdemServicoRepository.carregarDoBanco();
-        for (OrdemServico o : ordemServicosDB){
-            this.listaOS.add(o);
-            this.BUSCA.put(o.getNumeroOS(),o);
-        }
-
-
-
-    }
-
-
     private OrdemServicoRepository ordemServicoRepository = new OrdemServicoRepository();
     private ClienteRepository clienteRepository = new ClienteRepository();
     private List<OrdemServico> listaOS = new ArrayList<>();
     private HashMap<Integer, OrdemServico> BUSCA = new HashMap<>();
     private Set<Cliente> clientes = new HashSet<>();
     private HashMap<Integer, Cliente> buscaRapida = new HashMap<>();
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+
+
+
+    public GerenciadorAssistencia() {
+        //Metodo substituido
+        //this.listaOS = ArquivoService.carregar();
+        List<Cliente> clienteDoBanco = ClienteRepository.carregarDoBanco();
+        for (Cliente c : clienteDoBanco) {
+            this.clientes.add(c);
+            this.buscaRapida.put(c.getID(), c);
+        }
+        List<OrdemServico> ordemServicosDB = OrdemServicoRepository.carregarDoBanco();
+        for (OrdemServico o : ordemServicosDB){
+            this.listaOS.add(o);
+            this.BUSCA.put(o.getNumeroOS(),o);
+        }
+    }
+
 
     public void CriarCadastro(Cliente cliente) {
         if (!clientes.add(cliente)) {
@@ -46,8 +46,6 @@ public class GerenciadorAssistencia {
             buscaRapida.put(cliente.getID(), cliente);
             System.out.println("Cadastro realizado com sucesso");
         }
-
-
     }
 
     public void CriarOS(OrdemServico os) {
@@ -55,6 +53,7 @@ public class GerenciadorAssistencia {
         BUSCA.put(os.getNumeroOS(), os);
         //ArquivoService.salvar(listaOS);
         ordemServicoRepository.salvar(os);
+
         System.out.println("#OS" + os.getNumeroOS() + " Adicionado com sucesso!!!!!!!!");
     }
 
@@ -104,6 +103,14 @@ public class GerenciadorAssistencia {
         }
 
     }
+    public void finalizarOS(int numeroOS){
+        Optional<OrdemServico> os = Optional.ofNullable(BUSCA.get(numeroOS));
+        if (os.isPresent()){
+            os.get().setStatus(Status.FINALIZADO);
+            os.get().setDataFinalizada(LocalDate.now());
+            ordemServicoRepository.atualizar(os.get());
+        }
+    }
 
     public Optional<Cliente> buscarClientePorId(int id) {
         Optional<Cliente> os = Optional.ofNullable(buscaRapida.get(id));
@@ -122,6 +129,7 @@ public class GerenciadorAssistencia {
         System.out.println("3. Listar OS por Status");
         System.out.println("4. Cadastrar Cliente novo");
         System.out.println("5. Remover OS por ID");
+        System.out.println("6. Finalizar OS");
         System.out.println("0. Sair");
         System.out.print("Escolha: ");
 
