@@ -3,6 +3,7 @@ import model.OrdemServico;
 import model.Status;
 import service.ArquivoService;
 import service.GerenciadorAssistencia;
+import service.HibernateUtil;
 
 import java.util.List;
 import java.util.Scanner;
@@ -11,6 +12,13 @@ public class main {
     public static void main(String[] args) {
         GerenciadorAssistencia gerenciador = new GerenciadorAssistencia();
         Scanner sc = new Scanner(System.in);
+
+        try {
+            HibernateUtil.getSessionFactory();
+            System.out.println("Conexão com banco OK!");
+        } catch (Exception e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
+        }
 
 
         //menu de interação

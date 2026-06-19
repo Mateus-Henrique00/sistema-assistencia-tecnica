@@ -18,12 +18,11 @@ public class ArquivoService {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     public static void salvar(List<OrdemServico> lista) {
-        try {
-            FileWriter writer = new FileWriter(ARQUIVO);
+        try (FileWriter writer = new FileWriter(ARQUIVO)) {
             String json = gson.toJson(lista);
             System.out.println("JSON gerado: " + json);
             writer.write(String.valueOf(json));
-            writer.close();
+
             System.out.println("Dados cadastrado com sucesso!!!");
         } catch (IOException e) {
             System.out.println("ALGO DEU ERRADO");

@@ -1,16 +1,23 @@
 package model;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "clientes")
 public class Cliente {
 
-    private static transient int contador = 1;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ID;
     private String nome;
     private String telefone;
-    private int ID;
+
+    public Cliente() {
+    }
 
     public Cliente(String nome, String telefone) {
-        this.ID = ++contador;
         this.nome = nome;
         this.telefone = telefone;
     }

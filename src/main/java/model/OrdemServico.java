@@ -1,18 +1,32 @@
 package model;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name = "Ordem_Servico")
 public class OrdemServico {
 
-    private static transient int contador = 0;
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numero_OS")
+    private int NumeroOS;
+
+    @ManyToOne
     private Cliente cliente;
+
     private String aparelho;
     private double valorOrcamento;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    public OrdemServico() {
+    }
 
     public OrdemServico(String aparelho, Cliente cliente, Status status, double valorOrcamento) {
         this.aparelho = aparelho;
         this.cliente = cliente;
-        this.id = ++contador;;
         this.status = status;
         this.valorOrcamento = valorOrcamento;
     }
@@ -33,12 +47,12 @@ public class OrdemServico {
         this.cliente = cliente;
     }
 
-    public int getId() {
-        return id;
+    public int getNumeroOS() {
+        return NumeroOS;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNumeroOS(int numeroOS) {
+        this.NumeroOS = numeroOS;
     }
 
     public Status getStatus() {
@@ -61,7 +75,8 @@ public class OrdemServico {
     public String toString() {
         return "OrdemServico{" +
                 "aparelho='" + aparelho + '\'' +
-                ", id=" + cliente.getID()+
+                ", id Cliente=" + cliente.getID()+
+                ", N° OS=" + NumeroOS +
                 ", telefone=" + cliente.getTelefone() +
                 ", cliente=" + cliente.getNome() + '\'' +
                 ", valorOrcamento=" + valorOrcamento +
