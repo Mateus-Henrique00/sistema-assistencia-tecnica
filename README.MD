@@ -102,4 +102,4 @@ git clone https://github.com/SEU_USUARIO/sistema-assistencia-tecnica.git
 
 Feito por **Mateus Henrique**
 
-[![GitHub](https://img.shields.io/badge/GitHub-SEU_USUARIO-181717?style=flat&logo=github)](https://github.com/SEU_USUARIO)
+[![GitHub](https://img.shields.io/badge/GitHub-SEU_USUARIO-181717?style=flat&logo=github)](https://github.com/Mateus-Henrique00)
