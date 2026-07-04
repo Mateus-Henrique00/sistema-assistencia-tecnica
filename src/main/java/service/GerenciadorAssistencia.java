@@ -16,9 +16,6 @@ public class GerenciadorAssistencia {
     private HashMap<Integer, OrdemServico> BUSCA = new HashMap<>();
     private Set<Cliente> clientes = new HashSet<>();
     private HashMap<Integer, Cliente> buscaRapida = new HashMap<>();
-    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-
 
 
     public GerenciadorAssistencia() {
@@ -35,7 +32,6 @@ public class GerenciadorAssistencia {
             this.BUSCA.put(o.getNumeroOS(),o);
         }
     }
-
 
     public void CriarCadastro(Cliente cliente) {
         if (!clientes.add(cliente)) {
@@ -123,6 +119,7 @@ public class GerenciadorAssistencia {
     }
 
     public static void menu() {
+
         System.out.println("\n--- ASSISTÊNCIA TÉCNICA DO MATEUS ---");
         System.out.println("1. Nova Ordem de Serviço");
         System.out.println("2. Listar Todas Ordem de Serviço");
@@ -134,4 +131,5 @@ public class GerenciadorAssistencia {
         System.out.print("Escolha: ");
 
     }
+
 }

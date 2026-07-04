@@ -87,6 +87,11 @@ public class main {
                     gerenciador.CriarCadastro(cliente);
 
                     break;
+                case 5:
+                    System.out.println("Digite o ID da remover a OS");
+                    int RV = sc.nextInt();
+                    gerenciador.removerPorId(RV);
+                    break;
 
                 case 6:
                     System.out.println("Digite o número da OS para atualizar");
@@ -97,6 +102,7 @@ public class main {
                     break;
             }
             //Menu de interação
+
             GerenciadorAssistencia.menu();
             op = sc.nextInt();
             sc.nextLine();
