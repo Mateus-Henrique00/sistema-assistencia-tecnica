@@ -1,29 +1,4 @@
 
-/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Readme v3 · MD
 # 🔧 Sistema de Assistência Técnica — API REST
 
 API REST completa para gerenciamento de ordens de serviço de assistência técnica, desenvolvida com Java e Spring Boot.
